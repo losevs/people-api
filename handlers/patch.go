@@ -34,7 +34,7 @@ func PatchByID(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusInternalServerError).JSON("Body parsing error. Try again.")
 	}
 	if len(PersonReq.Name) != 0 {
-		age, gender, country, err := UnMar(Person.Name)
+		age, gender, country, err := UnMar(PersonReq.Name)
 		if err != nil {
 			return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 		}

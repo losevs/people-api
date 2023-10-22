@@ -4,13 +4,11 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
-	"github.com/losevs/people-api/database"
 	"github.com/losevs/people-api/handlers"
 	"github.com/losevs/people-api/logger"
 )
 
 func main() {
-	database.Database() //Попробовать поменять в database: Database() на func init() после создания POST в handlers
 	defer logger.Logfile.Close()
 	app := fiber.New()
 
@@ -23,17 +21,18 @@ func main() {
 func setupRoutes(app *fiber.App) {
 	show := app.Group("/show") // /show
 	show.Get("/", handlers.ShowAll)
+	show.Get("/age/asc", handlers.AgeType)
 	show.Get("/:id", handlers.ShowByID)
 	//PAGINATION
-	// pagShow := show.Group("/pag") // /show/pag
-	// pagShow.Get("/:page")
-	// pagShow.Get("/men/:page")
-	// pagShow.Get("/wmen/:page")
+	pagShow := show.Group("/pag") // /show/pag
+	pagShow.Get("/:page", handlers.Pag)
+	pagShow.Get("/men/:page", handlers.MenPag)
+	pagShow.Get("/wmen/:page", handlers.WMenPag)
 	//FILTERS:
-	// filtShow := show.Group("/filt") // /show/filt
-	// filtShow.Get("/sex/:sex")
-	// filtShow.Get("/country/:country")
-	// filtShow.Get("/age/:age")
+	filtShow := show.Group("/filt") // /show/filt
+	filtShow.Get("/sex/:sex", handlers.FiltSex)
+	filtShow.Get("/country/:country", handlers.FiltCountry)
+	filtShow.Get("/age/:age", handlers.FiltAge)
 
 	app.Post("/new", handlers.AddNew)
 

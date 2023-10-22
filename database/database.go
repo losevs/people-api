@@ -19,7 +19,7 @@ type Dbinstance struct {
 
 var DB Dbinstance
 
-func Database() {
+func init() {
 	// err := godotenv.Load("C:\\Users\\Owner\\Documents\\GoLang\\people-api\\.env")
 	err := godotenv.Load(".env")
 	if err != nil {
