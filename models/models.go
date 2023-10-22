@@ -7,7 +7,7 @@ type PersonRequest struct {
 }
 
 type PersonResponse struct {
-	ID          int64  `json:"id"`
+	ID          uint32 `json:"id"`
 	Name        string `json:"name"`
 	Surname     string `json:"surname"`
 	Patronymic  string `json:"patronymic,omitempty"`

@@ -27,7 +27,7 @@ func AddNew(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).JSON(err.Error())
 	}
 	filledPerson := models.PersonResponse{
-		ID:          int64(uuid.New().ID()),
+		ID:          uuid.New().ID(),
 		Name:        persReq.Name,
 		Surname:     persReq.Surname,
 		Patronymic:  persReq.Patronymic,
