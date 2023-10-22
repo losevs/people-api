@@ -19,13 +19,21 @@ $ make run
 ##### Get
 
 `localhost:80/show/`
+
 `localhost:80/show/:id`
+
 `localhost:80/show/age/asc`
+
 `localhost:80/show/pag/:page`
+
 `localhost:80/show//pag/men/:page`
+
 `localhost:80/show/pag/wmen/:page`
+
 `localhost:80/show/filt/sex/:sex`
+
 `localhost:80/show/filt/age/:age`
+
 `localhost:80/show/filt/country/:country`
 
 ##### Post
